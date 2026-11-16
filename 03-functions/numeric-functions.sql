@@ -10,12 +10,18 @@
 -- CAST + DECIMAL: Converte um valor para o tipo de dado decimal, permitindo especificar a precisão e a escala do número.
 
 -- Exemplo de uso das funções numéricas:
-SELECT ROUND(valor, 2) AS valor_arredondado,
-       ABS(valor) AS valor_absoluto,
-       POWER(valor, 2) AS valor_ao_quadrado,
-       SQRT(valor) AS raiz_quadrada_valor,
-       CAST(valor AS DECIMAL(10, 2)) AS valor_decimal
-FROM tabela_exemplo;
+-- EXEMPLO: aplicando funcoes numericas sobre as notas das matriculas.
+SELECT ROUND(nota, 1) AS nota_arredondada,
+       ABS(nota - 7) AS distancia_da_media,
+       POWER(nota, 2) AS nota_ao_quadrado,
+       SQRT(nota) AS raiz_quadrada_nota,
+       CAST(nota AS DECIMAL(10, 2)) AS nota_decimal
+FROM dbo.Matricula
+WHERE nota >= 0;
+
+-- SITUACAO: a secretaria deseja exibir as notas arredondadas para uma casa decimal.
+SELECT id_matricula, ROUND(nota, 1) AS nota_arredondada
+FROM dbo.Matricula;
 
 -- DIFERENÇA entre Round e Cast + Decimal:
 -- ROUND: Arredonda um valor numérico para um número especificado de casas decimais. Por exemplo, ROUND(3.14159, 2) retornará 3.14060.

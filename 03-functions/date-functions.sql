@@ -11,10 +11,15 @@
 -- DAY: Retorna o dia de uma data.
 
 -- Exemplo de uso das funções de data:
-SELECT CURRENT_DATE AS data_atual,
-       EXTRACT(YEAR FROM data_nascimento) AS ano_nascimento,
-       EXTRACT(MONTH FROM data_nascimento) AS mes_nascimento,
-       EXTRACT(DAY FROM data_nascimento) AS dia_nascimento,
-       DATE_ADD(data_nascimento, INTERVAL 1 YEAR) AS data_mais_um_ano,
-       DATE_SUB(data_nascimento, INTERVAL 1 MONTH) AS data_menos_um_mes
-FROM tabela_exemplo;
+-- EXEMPLO: consultando partes e calculando datas relativas a matricula.
+SELECT GETDATE() AS data_hora_atual,
+       YEAR(data_matricula) AS ano_matricula,
+       MONTH(data_matricula) AS mes_matricula,
+       DAY(data_matricula) AS dia_matricula,
+       DATEADD(YEAR, 1, data_matricula) AS data_mais_um_ano,
+       DATEADD(MONTH, -1, data_matricula) AS data_menos_um_mes
+FROM dbo.Matricula;
+
+-- SITUACAO: a secretaria deseja calcular quantos dias se passaram desde cada matricula.
+SELECT id_matricula, DATEDIFF(DAY, data_matricula, CAST(GETDATE() AS DATE)) AS dias_desde_matricula
+FROM dbo.Matricula;

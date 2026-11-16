@@ -48,7 +48,7 @@ AND idade >= 18;
 
 -- SITUACAO 5:
 -- A secretaria deseja consultar todos os alunos que moram em SP ou RJ e sejam maiores de idade, retornando o total de alunos.
-SELECT *, COUNT(*) AS total_alunos
+SELECT COUNT(*) AS total_alunos
 FROM dbo.Aluno
 WHERE (uf = 'SP' OR uf = 'RJ')
 AND idade >= 18;

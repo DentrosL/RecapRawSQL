@@ -1,9 +1,10 @@
--- DELETE FROM ... WHERE ...
--- O comando DELETE é usado para remover linhas de uma tabela com base em uma condição especificada na cláusula WHERE. Ele permite excluir uma ou mais linhas de uma tabela.
--- Sintaxe básica do DELETE:
--- DELETE FROM nome_da_tabela
--- WHERE condicao;
+﻿-- DELETE remove linhas. Chaves estrangeiras podem impedir a exclusao.
+-- Exclua primeiro a matricula dependente.
+-- EXEMPLO: excluir uma matricula para liberar a chave estrangeira.
+DELETE FROM dbo.Matricula
+WHERE id_matricula = 5;
 
--- EXEMPLO: deletando um aluno específico da tabela Alunos
-DELETE FROM dbo.Alunos
-WHERE id_aluno = 1;
+-- Agora o aluno sem matriculas pode ser removido.
+-- SITUACAO: excluir o aluno que ficou sem matriculas.
+DELETE FROM dbo.Aluno
+WHERE ra = '2024005';

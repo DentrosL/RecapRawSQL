@@ -1,16 +1,11 @@
--- UPDATE ... SET ... WHERE
--- O comando UPDATE é usado para modificar os dados existentes em uma tabela. Ele permite atualizar uma ou mais colunas de uma ou mais linhas, com base em uma condição especificada na cláusula WHERE.
--- Sintaxe básica do UPDATE:
--- UPDATE nome_da_tabela
--- SET coluna1 = valor1, coluna2 = valor2, ...
--- WHERE condicao;
-
--- EXEMPLO: atualizando o email de um aluno específico na tabela Alunos
-UPDATE dbo.Alunos
+﻿-- UPDATE altera linhas existentes. Use WHERE para limitar as linhas afetadas.
+-- EXEMPLO: atualizar a idade de um aluno especifico.
+UPDATE dbo.Aluno
 SET idade = 21
-WHERE id_aluno = 1;
+WHERE ra = '2024001';
 
--- EXEMPLO: atualizando o email de todos os alunos com idade maior que 20 na tabela Alunos
-UPDATE dbo.Alunos
-SET email = 'novo.email@example.com'
-WHERE idade > 20;
+-- Atualizando mais de uma coluna para um registro especifico
+-- SITUACAO: corrigir cidade e estado de um aluno.
+UPDATE dbo.Aluno
+SET cidade = 'Sao Paulo', uf = 'SP'
+WHERE ra = '2024002';

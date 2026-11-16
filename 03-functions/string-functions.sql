@@ -8,9 +8,15 @@
 -- LOWER: Converte todos os caracteres de uma string para minúsculas.
 
 -- Exemplo de uso das funções de string:
-SELECT CONCAT(primeiro_nome, ' ', ultimo_nome) AS nome_completo,
-       SUBSTRING(email, 1, 10) AS email_parcial,
-       REPLACE(endereco, 'Rua', 'Av.') AS endereco_modificado,
+-- EXEMPLO: formatando e transformando textos dos dados dos alunos.
+SELECT CONCAT(nome, ' - ', cidade, '/', uf) AS aluno_localidade,
+       SUBSTRING(nome, 1, 5) AS inicio_nome,
+       REPLACE(cidade, 'a', 'A') AS cidade_modificada,
        UPPER(cidade) AS cidade_maiuscula,
-       LOWER(pais) AS pais_minusculo
-FROM tabela_exemplo;
+       LOWER(nome) AS nome_minusculo,
+       LEN(nome) AS quantidade_caracteres
+FROM dbo.Aluno;
+
+-- SITUACAO: a secretaria deseja consultar os nomes em letras maiusculas.
+SELECT ra, UPPER(nome) AS nome_maiusculo
+FROM dbo.Aluno;

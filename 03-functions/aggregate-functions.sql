@@ -8,9 +8,12 @@
 -- MAX: Retorna o valor máximo de um conjunto de valores.
 
 -- Exemplo de uso das funções agregadas:
-SELECT COUNT(*) AS total_linhas_consulta,
-        SUM(valor) AS soma_valores,
-        AVG(valor) AS media_valores,
-        MIN(valor) AS valor_minimo,
-        MAX(valor) AS valor_maximo
-FROM tabela_exemplo;
+-- EXEMPLO: calculando quantidade, soma, media, menor e maior nota.
+SELECT COUNT(*) AS total_matriculas, SUM(nota) AS soma_notas,
+       AVG(nota) AS media_notas, MIN(nota) AS menor_nota,
+       MAX(nota) AS maior_nota
+FROM dbo.Matricula;
+
+-- SITUACAO: a secretaria deseja comparar matriculas com notas preenchidas.
+SELECT COUNT(*) AS total_matriculas, COUNT(nota) AS matriculas_com_nota
+FROM dbo.Matricula;

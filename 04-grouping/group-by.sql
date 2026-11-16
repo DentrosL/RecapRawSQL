@@ -30,9 +30,3 @@ SELECT TOP(5) id_turma, AVG(nota) AS media_nota
 FROM dbo.Matricula
 GROUP BY id_turma
 ORDER BY media_nota ASC;
--- ou
-SELECT id_turma, AVG(nota) AS media_nota
-FROM dbo.Matricula
-GROUP BY id_turma
-ORDER BY media_nota ASC
-LIMIT 5;
